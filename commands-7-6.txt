@@ -1,0 +1,61 @@
+// retrive : select command
+// what u want to select : columns, 
+// how much u want to select : where clause
+Q. Describe employee table
+desc employee;   // describe table structure
+
+column selection : projection
+row selection : selection
+how to restrict column selection : by selecting particular columns 
+how to restrict row selection : by using where clause
+
+Q. Show id, firstname, lastname and city where employee live.
+select employee_id, first_name, city, last_name 
+from employee;
+
+Q. Show all information of all employees
+select age, dept_code ,employee_id  "emp id", first_name fname, last_name as "lname", city, salary, commission
+from employee;
+
+select * from employee;
+
+
+
+// retrive : select command
+// what u want to select : columns, 
+// how much u want to select : where clause
+Q. Describe employee table
+desc employee;   // describe table structure
+
+column selection : projection
+row selection : selection
+how to restrict column selection : by selecting particular columns 
+how to restrict row selection : by using where clause
+
+Q. Show id, firstname, lastname and city where employee live.
+select employee_id, first_name, city, last_name 
+from employee;
+
+Q. Show all information of all employees
+select age, dept_code ,employee_id  "emp id", first_name fname, last_name as "lname", city, salary, commission
+from employee;
+
+select * from employee;
+
+Q. Describe department table
+desc department;
+
+Q. diplay name and budget of the department
+
+select d_name, d_budget from department;
+
+Q. display above query with alias 'name', 'budget'
+
+select d_name "name", d_budget "budget" from department;
+
+Q. Display all information of all departments
+
+select * from department;
+
+
+

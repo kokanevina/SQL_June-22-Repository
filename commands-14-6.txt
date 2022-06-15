@@ -1,0 +1,62 @@
+select * from employee
+/*where clause : to apply condition before making groups : rows will be filtered before group
+having clause :  to apply condition after making groups : rows will be filtered after group 
+where
+group by
+having
+order by
+*/
+Q. Show sum of salary of only those employees dapartment wise having salary>60000 
+/*
+SM : 10 employees 
+5 employees: salary >60000   sum(salary of 5 employees) department wise*/
+select * from employee order by dept_code,salary;
+
+select dept_code, count(salary),sum(salary) 
+from employee
+where salary>60000
+group by dept_code;
+
+Q. Show sum of salary greater than 450000   of only those employees having salary>60000 dapartment wise 
+Display sum in desc order
+select dept_code, count(salary),sum(salary) 
+from employee
+where salary>60000
+group by dept_code
+having sum(salary)>450000
+order by 3 desc
+
+
+Q. Can we use having without group by ?  : YES
+
+Q. Show number of employees from employee table. Show  it only if count is greater than 50
+
+select count(employee_id)
+from employee
+having count(employee_id)>50
+/*without group by whole table is one group*/
+
+Q. Show Maximum salary from SM and LD department.
+(U can filter departments using wither where clause or having clause)
+
+select dept_code,max(salary) from employee 
+where dept_code IN ('SM','LD') group by dept_code ;
+
+select max(salary) ,dept_code from employee 
+group by dept_code
+having dept_code = 'SM' or dept_code = 'LD' 
+
+min, avg
+
+Q. Display minimum salary of employees city wise. Exclude null cities
+select lower(trim(city)),count(salary), min(salary) from employee  
+where city is not null
+group by lower(trim(city))
+
+Q. Show number of employees and their average age commission wise. Put alias, make round of average, and order commission wise
+select commission,round(avg(age)) "Age Average",round(count(age)) "Total emmployees" 
+from employee 
+group by commission
+order by commission; 
+
+

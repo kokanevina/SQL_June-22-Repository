@@ -1,0 +1,37 @@
+select * from employee
+/*upper, lower , initcap, concat / || , rpad, lpad, length, ltrim, rtrim, trim, replace , substr*/
+
+Q. Display Employee cities in uppercase, firstname in lowercase, lastname in inital letter capital
+
+select upper(city) "city", lower(first_name) "fname", initcap(last_name) "lname"
+from employee
+
+Q. Display city and trimmed city
+
+select city, ltrim(city) "lcity", rtrim(city) "rcity", trim(city) "city"
+from employee
+
+select trim('  neosoft technpology     ') from dual;
+
+Q. Display records like following 
+Employee Kishor Pawar work in WD deparment
+Employee (first_name) (last_name) work in (dept_code) deparment
+
+select 'Employee ' || first_name || ' ' || last_name || ' works in ' || dept_code || ' deparment' "working info"
+from employee;
+
+select concat(concat(concat( 'Employee ', first_name), ' '),last_name)
+from employee;
+
+Q. Display output in following format (Exclude null commission records)
+Kishor 'has commision' 2000
+
+select first_name|| ' has commision ' || commission from employee where commission is not null;
+
+select concat(concat(first_name,' has Commision '),COMMISSION) from employee where COMMISSION is not null 
+
+Q. Display output in following format (Exclude null commission records, and first name should be trimmed)
+Kishor 'has commision' 2000
+
+select concat(concat(trim(first_name),' has Commision '),COMMISSION) from employee where COMMISSION is not null 
+

@@ -1,0 +1,27 @@
+
+select * from employee
+Q. Display how many employee records are there in table
+select count(employee_id) "Total employees" from employee;
+
+select count(*) "Total employees" from employee;
+/*count (*) will count the rows having atleast one non null column*/
+Q. Difference between count (*) and count(column name)
+select count(COMMISSION) from employee   /*17 not 25 it will not count null values*/
+
+Q. How many employees are there in WD department
+select count(employee_id) "Total employees" from employee  where dept_code='WD' ;
+Q. How many employees are there in each department, order in ascending order of count  /* group by clause*/
+
+select count(*) "Total Employees" ,dept_code from employee
+group by dept_code order by count(*);
+
+/*below query is wrong why? it is not a group by as employee_id wont give u group*/
+select employee_id, count(employee_id), dept_code from employee group by dept_code;
+
+Q. How many employees from same department are coming from same city
+select dept_code, city, count(employee_id) from employee group by dept_code,city order by dept_code
+
+select dept_code, lower(city), count(employee_id) 
+from employee 
+group by dept_code,lower(city) 
+order by dept_code

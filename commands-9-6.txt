@@ -1,0 +1,70 @@
+desc employee;
+Q. Show employees having commision below 2000 or  above 4000
+select * from employee where commission not between 2000 AND 4000;
+select * from employee where commission<2000
+insert into employee values (9999,'p','q','Satara',54,45000,1000,null)
+
+/*like operator  % : 0 to n characters  _ : exactly one any character*/
+
+Q. Display employees whose name starts with 'P'/'p';
+select * from employee where first_name like 'P%' or first_name like 'p%';
+
+select * from employee where upper(first_name) like 'P%';
+
+Q. Display employees with last name ending with di;
+select * from employee where last_name like '%di'   
+
+Q. Display employees whose city name contains 'a'
+select * from employee where city like '%a%'; 
+
+Q. Diplay employees whose last name contains exactly 5 characters
+
+select * from employee where last_name like '_____';
+
+select * from employee where length(last_name)=5;
+
+Q. Display employees whose city name contains 'r' at 2nd last position
+select * from employee where city like '%r_';
+
+
+Q. Display employees who dont have commission;
+select * from employee where commission is null;
+
+Q. Display employees from SM department having no commission
+
+select * from employee where commission is null and dept_code='SM';
+
+Q. Display employees from WD deparment having commission.
+select * from employee where dept_code='WD' and commission is not null;
+
+
+
+
+select * from employee
+order by employee_id ;   /*asc */
+
+select first_name,city from employee 
+where city='Satara' 
+order by first_name;
+
+Q. Display employees from WD department in descending  order of their last name
+select first_name, last_name from employee where dept_code='WD' order by last_name desc;
+/*its not compulsion that order by column should be there in select clause*/
+select first_name from employee where dept_code='WD' order by last_name desc;
+Q. Display employees in ascending order of there department, and then city.
+select * from employee order by dept_code, city
+
+
+select * from employee;
+
+select employee_id, last_name,first_name,dept_code from employee order by first_name, dept_code
+select employee_id, last_name,first_name,dept_code from employee order by 3, 4
+/*
+in order by clause we can put column number instead of column name
+if u are selecting order column in select tag, then in order by clause u can put number on basis of select clause*/
+
+select first_name, employee_id from employee order by 2;
+/*if query is select * then in order by clause column number is considered from table*/
+select * from employee order by 8;
+
+
