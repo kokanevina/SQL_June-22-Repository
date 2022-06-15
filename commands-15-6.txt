@@ -35,3 +35,21 @@ Kishor 'has commision' 2000
 
 select concat(concat(trim(first_name),' has Commision '),COMMISSION) from employee where COMMISSION is not null 
 
+// select * from employee
+/* rpad, lpad, length,replace , substr*/
+
+Q. display name and length of name if employee
+
+select first_name, length(first_name),last_name, length(last_name)
+from employee
+
+Q. Display only those employees whose length of fname and lname is same
+
+select * from employee
+where length(first_name)=length(last_name) ;
+Q. Display only those employees whose length of fname and lname  and city is same
+select * from employee
+where length(first_name)=length(last_name)
+and length(first_name)=length(city)
+
+
