@@ -1,1 +1,7 @@
-gffgn
+
+
+Display number of employees coming from same city (ignore case, and also trim)   pune, Pune '   pune  '
+
+Display string in following format
+
+KISHOR Pawar from mumbai takes salary 56000 
