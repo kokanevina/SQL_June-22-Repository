@@ -1,0 +1,1 @@
+Write a query for replace function, translate function in string function

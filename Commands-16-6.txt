@@ -19,3 +19,31 @@ where soundex(city)=soundex('Puna');
 Q. Display employees with sirname "Paatiiill"
 
 select first_name,last_name from employee where soundex(last_name) = soundex('Paaatill');
+
+desc student;
+select * from student;
+/*greatest, least, power, round, trunc, sqrt,mod, ceil, floor */
+
+Q. Display which are highest marks of every student
+
+select std_id, greatest(ph_marks, ch_marks, maths_marks, bio_marks) "highest marks"
+from student;
+Q. Display which are lowest marks of every student
+select std_id, least(ph_marks, ch_marks, maths_marks, bio_marks) "lowest marks"
+from student;
+
+Q. Display total of ph, ch,maths and total of ph, ch, bio for every student
+
+select std_id, (ph_marks+ ch_marks+maths_marks) "PCM",  (ph_marks+ ch_marks+ bio_marks) "PCB" from student;
+
+Q. Display total of ph, ch,maths and total of ph, ch, bio for every student
+
+Q. Square the commision , Double the commision for employees from WD department and display original and new commission
+power function
+select employee_id, commission, power(commission, 2), commission*2 from employee where dept_code='WD'
+
+Q. display cube of 7
+select power(7,3) from dual
+
+
+
