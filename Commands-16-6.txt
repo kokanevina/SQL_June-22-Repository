@@ -1,0 +1,21 @@
+select * from employee;
+ soundex
+
+Q. display length of city,  add extra padding to make it 10 and then display new length
+select city, length(city), rpad(city,10,'*'), lpad(city,10,'#'), length(rpad(city,10,'*'))
+from employee;
+
+Q. Display firstname with fixed length 6 (padd * if needed)
+select rpad(trim(first_name), 6 , '*') from employee;
+
+select rpad(trim(first_name),6,'*') from employee where length(first_name) < 7
+
+insert into employee values (123,'Soham','Paatil','Poone',34,47000,null,'HR');
+
+Q. Display employees with cities from Pune city (sounds : Poone, Pune)
+select first_name, city from employee
+where soundex(city)=soundex('Puna');
+
+Q. Display employees with sirname "Paatiiill"
+
+select first_name,last_name from employee where soundex(last_name) = soundex('Paaatill');
