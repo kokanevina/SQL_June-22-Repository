@@ -1,1 +1,2 @@
 Write a query for replace function, translate function in string function
+Show the difference using example
