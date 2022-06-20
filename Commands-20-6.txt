@@ -1,0 +1,16 @@
+round, trunc
+
+
+select round(56789.78345,4), round(56789.78345,3), round(56789.78345,2), round(56789.78345,1)from dual;
+/*1-4 : digit is removed but previous digts kept as it is
+5-9 : digit is removed but previous digit= digit+1 */
+
+select round(56789.78345,0), round(56789.78345) from dual;
+select round(56789.48345,0), round(56789.48345) from dual;
+/*-ve values accepted or not?*/
+
+select round(56789.78345,-1), round(56789.78345,-2), round(56789.78345,-3), round(56789.78345,-4), round(56789.78345,-5),round(56789.78345,-6) from dual;
+/*56790, 56800,57000, 60000*/
+
+select round(56789.78345,4), trunc(56789.78345,4),trunc(56789.78345,-1) from dual
+
