@@ -14,3 +14,16 @@ select round(56789.78345,-1), round(56789.78345,-2), round(56789.78345,-3), roun
 
 select round(56789.78345,4), trunc(56789.78345,4),trunc(56789.78345,-1) from dual
 
+
+desc neoemp
+Q. Display employeed joined on which date
+select first_name, dept_code, join_date from neoemp; /*DD-MON-YY*/
+Q. Display date like this Monday,  20-6-2022
+select first_name, dept_code, to_char(join_date,'DY, DD-MM-YYYY') from neoemp;
+select first_name, dept_code, to_char(join_date,'DAY, DD-MM-YYYY') from neoemp;
+Q. aaksha joined on December, 2019
+select first_name || ' joined on ' || to_char(join_date,'MONTH, YYY') "Joining info" from neoemp;
+select first_name || ' joined on ' || to_char(join_date,'fmMONTH, YYY') "Joininf info" from neoemp;
+
+select to_char (sysdate, 'W') from dual
+
