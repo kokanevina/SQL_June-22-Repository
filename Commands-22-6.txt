@@ -28,3 +28,7 @@ ROUNDING ON DAY.....
 
 select  to_char(join_date,'DD-MON-YYYY HH24:MI:SS')  "Original Date",
 to_char(round(join_date, 'DD'),'DD-MON-YYYY HH24:MI:SS')  "Rounded Date" from neoemp; /*DD*/
+
+STANDARD DEVIATION : GROUP FUNCTION
+desc employee;
+select round(stddev(salary),3), round(stddev(age),2) from employee
