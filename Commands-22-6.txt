@@ -1,0 +1,30 @@
+select to_char(join_date,'DD-MON-YY HH:MI:SS AM') from neoemp;
+select to_char(join_date,'DD-MON-YY HH:MI:SS PM') from neoemp;
+select to_char(join_date,'DD-MON-YY HH:MI:SS P.M.') from neoemp;
+
+Suraj joined on 21st of August, 2012
+Suraj joined on 12th of September, 2012
+select first_name || ' joined on ' || to_char(join_date,'DDth "of" fmMONTH, YYYY') "join info" from neoemp;
+
+ROUNDING ON YEAR......
+12 Months:
+JAN-JUNE  : rounded to same year 1st JAN
+JULY-DEC  : rounded to next year 1st JAN
+
+select round(to_date('12-DEC-2020'),'YY') from dual;  /*Y, YEAR, YY*/
+
+select to_char(join_date,'DD-MON-YYYY'), to_char(round(join_date,'Y'),'DD-MON-YYYY')  from neoemp;
+
+ROUNDING ON MONTH....
+JAN-MAY : round: same year 1st month
+select round(to_date('31-July-2020'),'MON') from dual;  /*MONTH, MM,MON*/
+1-15 : same month 1st date
+16-30 : next month 1st date
+
+ROUNDING ON DAY.....
+1 day: 24 hrs 
+1-12  : rounded to same day midnight 00:00:00
+13-24 : rounded to next day midnight 00:00:00
+
+select  to_char(join_date,'DD-MON-YYYY HH24:MI:SS')  "Original Date",
+to_char(round(join_date, 'DD'),'DD-MON-YYYY HH24:MI:SS')  "Rounded Date" from neoemp; /*DD*/

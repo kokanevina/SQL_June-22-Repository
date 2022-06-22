@@ -1,0 +1,13 @@
+desc neoemp;
+
+
+select last_day(sysdate) from dual;
+select join_date,last_day(join_date)from neoemp;
+select months_between(sysdate, join_date) from neoemp;
+select months_between(sysdate, join_date)/12 "years completed" from neoemp;
+select round(months_between(sysdate, join_date)/12) "years completed" from neoemp;
+
+select sysdate, add_months(sysdate, 2) from dual;
+select add_months(to_date('14-Jul-2022'), 2) from dual;
+select add_months(to_date('14-Jul-2022'), 12) from dual;
+
