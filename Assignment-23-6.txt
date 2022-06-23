@@ -1,0 +1,5 @@
+Assign committiees like following to employees
+Employees from Mumbai,mumbai ==> Singing
+Employees from Pune,pune,PUNE==> Dancing
+Employees from Satara,  SATARA ==> Ankering
+rest employees  ==> Cleaning
