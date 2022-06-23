@@ -1,0 +1,23 @@
+Q. Display employees salary+commission . If employees do not have commission then atleast salary to be displayed
+select first_name, salary, commission, salary+commission from employee;
+/*NVL: replace the null  with non-null value */
+select first_name, salary, commission, salary+NVL(commission,0) from employee;
+select first_name || ' living in ' || NVL(city,'city not mentioned') from employee
+/*NVL2: non-null : replaced, null : replaced*/
+Q. List the employees with 'city-mentioned' for non null cities  and 'city not mentioned' for null cities
+select first_name || ' living in ' || NVL2(city,'city mentioned','city not mentioned') from employee
+
+Q. Label the employees 'Applicable' if commision is nonnull, 'Not Applicable' if commission is null
+ select  first_name, commission, NVL2(commission, 'Applicable', 'Not Applicable') "Applicable for CommitteeHead?" from employee;
+/*NULLIF : if exp1==exp2 then returns null else return exp1*/
+Q.display employees whose length of firstname and lastname is same
+select first_name, last_name from employee where length(first_name) = length(last_name);
+Q. display null if length of firstname and lastname is matching else display display length of firstname
+select first_name, last_name, NULLIF(length(first_name), length(last_name)) from employee
+
+whose length is matching display message ="same length"
+select first_name, last_name, NVL(to_char(NULLIF(length(first_name), length(last_name))), 'same length') from employee
+
+
+NVL(numeric, numeric)
+NVL(string, string/number)
