@@ -21,3 +21,28 @@ select first_name, last_name, NVL(to_char(NULLIF(length(first_name), length(last
 
 NVL(numeric, numeric)
 NVL(string, string/number)
+
+
+
+Q. coalesce (ep1,ep2,ep3)
+
+select coalesce(45,null,23,null,67) from dual;
+select employee_id, commission,city, coalesce(to_char(commission),city) from employee;
+
+Q. Increment salary by 5000  and display for employees working in WD deparment
+
+select first_name, salary+5000, dept_code from employee where dept_code='WD'
+
+Q. Increment salary by 5000  and display for employees working in WD deparment
+   Increment salary by 3000  and display for employees working in HR deparment
+   Increment salary by 2000  and display for employees working in SM deparment
+
+select first_name, dept_code, salary, 
+    CASE dept_code
+        WHEN 'WD' then salary+5000
+        WHEN 'HR' then salary+3000
+        WHEN 'SM' then salary+2000
+        ELSE salary
+    END
+from employee;
+
