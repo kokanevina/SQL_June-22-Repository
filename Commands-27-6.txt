@@ -1,0 +1,38 @@
+select * from employee;
+
+Q. If Salary of employee between 30000 to 50000 : salary+5000
+if salary of employee between 51000 to 60000 : salary+3000
+if salary of employee between 61000 to 90000 salary+2000
+salary : salary+1000
+
+select first_name, salary, 
+    CASE 
+        WHEN  salary between 30000 and 50000 then salary+5000
+        WHEN  salary between 51000  and 60000  then salary+3000
+        WHEN salary between 61000  and 90000 then salary+2000
+        ELSE salary+1000
+    END "Increment"
+from employee;
+
+Q. employee id=111 : salary+10000
+employee salary < 55000 : salary+5000
+
+select employee_id, salary, 
+    CASE 
+        WHEN  employee_id=111 then salary+10000
+        WHEN  salary<55000 then salary+5000
+        ELSE salary
+    END "Increment"
+from employee;
+
+select employee_id, salary, salary+10000 "increment"
+from employee
+where employee_id=111
+UNION
+select employee_id, salary, salary+10000 "increment"
+from employee
+where salary<55000
+UNION
+select employee_id, salary, salary "increment"
+from employee
+where employee_id!=111 or salary>=55000;
