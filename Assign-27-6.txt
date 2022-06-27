@@ -1,0 +1,4 @@
+What is the role of department of employees where they are working
+Write above query in following format
+
+Vivek Kumar works in Learning and Development deparment having role [display role here]
