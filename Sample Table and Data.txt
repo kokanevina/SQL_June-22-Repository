@@ -2,14 +2,14 @@ drop table department;
 drop table employee;
 drop table student;
 
-create table department (d_code varchar(10) primary key, d_name varchar(100),
+create table department(d_code varchar(10) primary key, d_name varchar(100),
 d_budget number(20), d_role varchar(100));
 
 insert into department values ('SM', 'Sales and Marketing', 900000, 'selling and marketing services and products');
 insert into department values ('HR', 'Human Resource', 500000,'managing resources from all departments');
 insert into department values ('LD', 'Learning and Development', 600000,'dealing with trainings and new learning trends');
 insert into department values ('WD', 'Web Development', 500000, 'Developing Web applications with different technologies');
-
+insert into department values ('RST', 'Research and Testing', 1500000, 'Researching new algorithms and testing them for variaous technologies');
 
 create table employee (employee_id number(5) primary key, 
 first_name varchar2(20), 
@@ -43,6 +43,9 @@ insert into employee(employee_id,first_name,age,salary,dept_code) values(105,'Ra
 insert into employee values (344,'   Kishor',' Kishor  ','   Satara ',66,98000,4000,'HR');   
 insert into employee values(182,'Gauresh','Patil','Delhi',56,48000,null,'SM');
 insert into employee values(677,'Veena','Patil','Mumbai',66,90000,6000,'LD');
+insert into employee values(878,'Soham','Rajput','Mumbai',34,45000,1000,null);
+insert into employee values(989,'Mohan','Rajput','Pune',44,50000,1000,null);
+insert into employee values(999,'Veena','Bhagat','Satara',40,49000,1000,null);
 
 create table student(std_id number(8) primary key, ph_marks number(5), ch_marks number(5), maths_marks number(5), bio_marks number(5));
 insert into student values (222,78,90,67,89);

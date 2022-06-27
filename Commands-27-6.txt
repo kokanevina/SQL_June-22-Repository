@@ -1,5 +1,4 @@
 select * from employee;
-
 Q. If Salary of employee between 30000 to 50000 : salary+5000
 if salary of employee between 51000 to 60000 : salary+3000
 if salary of employee between 61000 to 90000 salary+2000
@@ -36,3 +35,34 @@ UNION
 select employee_id, salary, salary "increment"
 from employee
 where employee_id!=111 or salary>=55000;
+
+
+insert into department values ('RST', 'Research and Testing', 1500000, 'Researching new algorithms and testing them for variaous technologies');
+/*Types Of joins :
+Inner Join (JOIN),full Outer Join (FULL Join ), left JOIN (left outer join) right join (right outer join ), 
+natural join, equi join, non-equi join, cross join*/
+Q. Display which employees working in which department (name, budget)
+Inner Join : matching rows from left and right table joined on pk and fk
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee join department on dept_code=d_code;
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee,department where dept_code=d_code;
+
+/*if we have ambigoud columns in tables then use tablename/alias of table to qualify*/
+
+select employee_id, first_name, employee1.d_code , department1.d_code , d_name, d_budget
+from employee1  join department1  on employee1.d_code=department1.d_code;
+
+select employee_id, first_name, e.d_code , d.d_code , d_name, d_budget
+from employee1 e join department1 d on e.d_code=d.d_code;
+
+
+select e.employee_id, e.first_name, e.d_code , d.d_code , d.d_name, d.d_budget
+from employee1 e join department1 d on e.d_code=d.d_code;
+
+
+
+
+
