@@ -53,3 +53,31 @@ from employee1 e natural join department1
 
 
 
+drop table toys;
+
+create table toys(toy_code NUMBER(6) primary key, toy_name VARCHAR2(50), toy_price NUMBER(8,3));
+
+insert into toys values (3333,'Teddy Bear', 450);
+insert into toys values (2222,'Ball', 100);
+insert into toys values (1111,'Toy Train', 550);
+
+create table colors(color_code varchar(50) primary key, color_name varchar(50));
+
+insert into colors values ('#0000FF', 'blue');
+insert into colors values ('#FF0000', 'red');
+insert into colors values ('#00FF00', 'green');
+
+Q.  3 rows, 3 rows  ==>  9 rows
+all possible combinations of rows from left table with rows from right table
+Cartetian Product, Cross Join
+Pk and Fk relation no needed, not used
+
+select * from toys cross join colors
+
+select employee_id, dept_code, d_code, d_name
+from employee cross join department
+
+
+
+
+
