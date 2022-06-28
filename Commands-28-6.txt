@@ -1,0 +1,37 @@
+/*left outer join, right outer join, full outer join
+Q. Employees working in which department as well as Employees who r not working in any department
+
+matching rows from both the tables as well as non matching rows from left table.
+at right side null gets displayed for nonmatching records
+
+employee left outer join department*/
+
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee left outer join department on dept_code=d_code;
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee left  join department on dept_code=d_code;
+
+/*Q. Employees working in which department as well as Departments where no any employee working
+
+at left side null gets displayed for nonmatching records
+employee right join  department*/
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee right outer join department on dept_code=d_code;
+
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee right  join department on dept_code=d_code;
+
+/*
+Q. Employees working in which department, Employees not working in any department, Departments where no employee working
+matching, non matching from both tables*/
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee full outer  join department on dept_code=d_code;
+
+
+select employee_id, first_name, dept_code, d_code, d_name, d_budget
+from employee full  join department on dept_code=d_code;
