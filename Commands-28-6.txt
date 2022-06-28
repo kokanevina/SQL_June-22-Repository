@@ -35,3 +35,21 @@ from employee full outer  join department on dept_code=d_code;
 
 select employee_id, first_name, dept_code, d_code, d_name, d_budget
 from employee full  join department on dept_code=d_code;
+
+
+/*natural join: naturally joins the table with common  column: pk colname and fk colname should be same
+
+it will matching rows only same as inner join*/
+with Inner Join:
+
+select employee_id, first_name, e.d_code , d.d_code , d_name, d_budget
+from employee1 e join department1 d on e.d_code=d.d_code;
+
+with natural join : Note: qualifier not allowed for common column
+
+select e.employee_id, first_name, d_code  , d_name, d_budget
+from employee1 e natural join department1 
+
+
+
+
