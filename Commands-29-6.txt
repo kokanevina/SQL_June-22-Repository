@@ -1,0 +1,125 @@
+select * from neoemp;
+
+Display employee names and their manager names
+Kishor==>null
+Rupa Wagh==>Kishor Pawar
+
+inner join : neoemp emp join neoemp mgr ==> self join
+
+
+select emp.employee_id,emp.first_name, emp.last_name,mgr.employee_id,mgr.first_name,mgr.last_name
+from neoemp emp join neoemp mgr 
+on emp.manager_id=mgr.employee_id
+
+
+1. JOIN: all matching records : employees having managers
+
+select emp.first_name || ' '|| emp.last_name || '==>' || mgr.first_name || ' ' || mgr.last_name "employee==>manager"
+from neoemp emp join neoemp mgr 
+on emp.manager_id=mgr.employee_id
+
+2. left join : all matchin from both+nonmatching from left table : employees having managers, employees having no any manager
+
+select emp.first_name || ' '|| emp.last_name || '==>' || mgr.first_name || ' ' || mgr.last_name "employee==>manager"
+from neoemp emp left join neoemp mgr 
+on emp.manager_id=mgr.employee_id
+
+3. right join: all matching from both t+ non-matching from right table:
+employees having managers, employees not acting as managers
+
+select emp.first_name || ' '|| emp.last_name || '==>' || mgr.first_name || ' ' || mgr.last_name "employee==>manager"
+from neoemp emp right  join neoemp mgr 
+on emp.manager_id=mgr.employee_id
+
+select * from neoemp;
+
+
+
+
+select * from employee
+Q. What is maximum salary of employee?
+
+select max(salary) from employee
+
+Q. Who have maximum salary among all employees
+
+select * from employee order by salary desc FETCH NEXT 1 ROWS ONLY; /*only one employee*/
+
+select * from employee where salary = (select max(salary) from employee) /*all employees having maximum salary*/
+
+
+Q. display top 3 employees having maxium salary
+select * from employee order by salary desc FETCH NEXT 3 ROWS ONLY;  /*ties not included*/
+
+select * from employee order by salary desc FETCH NEXT 3 ROWS WITH TIES;  /*ties included*/
+
+
+Q. Display employee names who have salary lower than average salary
+
+select avg(salary) from employee;
+
+select * from employee where salary < 
+    ( select avg(salary) from employee) 
+order by salary desc;
+
+Types: single row subquery : if subquery returing single result ==> =, !=, >, <, >=,<=
+multi row subquery : if subquery return multiple results to main query
+
+Q. Show employees whose salary is greater than salary of employees with id 989 and 878
+
+select salary from employee where employee_id in(989,878);  ==> 50000,45000
+any / in , all
+
+
+
+
+
+select * from employee
+Q. What is maximum salary of employee?
+
+select max(salary) from employee
+
+Q. Who have maximum salary among all employees
+
+select * from employee order by salary desc FETCH NEXT 1 ROWS ONLY; /*only one employee*/
+
+select max(salary) from employee; /*98000*/
+
+select * from employee where salary = (select max(salary) from employee) /*all employees having maximum salary*/
+
+
+Q. display top 3 employees having maxium salary
+select * from employee order by salary desc FETCH NEXT 3 ROWS ONLY;  /*ties not included*/
+
+select * from employee order by salary desc FETCH NEXT 3 ROWS WITH TIES;  /*ties included*/
+
+
+Q. Display employee names who have salary lower than average salary
+
+select avg(salary) from employee; /*72535.7142857142857142857142857142857143*/
+
+select * from employee where salary < 
+    ( select avg(salary) from employee) 
+order by salary desc;
+
+Types: single row subquery : if subquery returing single result ==> =, !=, >, <, >=,<=
+
+multi row subquery : if subquery return multiple results to main query
+
+Q. Show employees whose salary is greater than any of salary of employees with id 989 and 878
+
+subquery : select salary from employee where employee_id in(989,878); /* 50000,45000 */
+
+select * from employee where salary > 
+    any (select salary from employee where employee_id in(989,878));
+order by salary desc;
+
+Q. Show employees whose salary is greater than all of salary of employees with id 989 and 878
+
+select * from employee where salary > 
+    all (select salary from employee where employee_id in(989,878)) 
+order by salary desc
+
+any : put or operation with result of subquery
+all : put and operation with result of subquery
+
