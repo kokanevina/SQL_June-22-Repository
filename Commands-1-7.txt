@@ -1,0 +1,61 @@
+< any, > any, <=any, >=any != any/ NOT IN, =any /IN
+insert into employee values(545,'Kanha','Patel','Delhi',55,45000,1000,'WD');
+ Q. Show employees whose salary is same as any salary of employees with id 989 and 878
+
+select salary from employee where employee_id in(989,878) /*45000,50000*/
+
+select * from employee 
+where salary = any (select salary from employee where employee_id in(989,878))
+and employee_id not in (989,878)
+order by salary desc;
+
+select * from employee where salary IN  (select salary from employee where employee_id in(989,878))
+and  employee_id not in (989,878)
+order by salary desc;
+
+
+Q. Show employees whose salary is not same as any salary of employees with id 989 and 878
+
+select * from employee 
+where salary != any (select salary from employee where employee_id in(989,878))
+and employee_id not in (989,878)
+order by salary desc;
+
+select * from employee 
+where salary NOT IN  (select salary from employee where employee_id in(989,878))
+and employee_id not in (989,878)
+order by salary desc;
+
+
+Nested Subqueries, Correlated Subqueries
+
+Calculate average salary of those employees whose salary is more than salary of  employee 301
+
+subquery : select salary from  employee where employee_id=301
+subquery : select salary from employee where salary>(select salary from  employee where employee_id=301)
+
+
+Q. Who are earning maximum salary in their own department
+
+select max(salary),dept_code from employee
+where dept_code is not null
+group by dept_code;
+
+
+sub query :  select max(salary) from employee
+group by dept_code;
+
+select * from employee e1  where salary IN 
+      (select max(salary) from employee e2 where e1.dept_code = e2. dept_code and dept_code is not null group by dept_code)
+
+
+Q. Who is Elder employee from every city
+
+select * from employee e1 where age in 
+    (select max(age) from employee e2 
+    where lower(trim(e1.city)) = lower(trim(e2.city)) 
+    group by lower(trim(e2.city))
+    );
+
+
+

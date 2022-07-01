@@ -1,0 +1,7 @@
+Who is the employee taking highest commision
+
+Display employees taking commission lower than commission of employee with id 109
+
+Display employees from SM department who have commission greater than all of employees from LD department
+
+Display employees from SM department who have commission greater than any of employees from LD department
