@@ -1,0 +1,3 @@
+select employees from Mumbai  make union with employees from Pune
+
+select employees from Satara having salary greater than 60000 : implement normally as well as with intersect 
