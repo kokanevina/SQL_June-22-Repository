@@ -1,0 +1,88 @@
+Who are the employees from wd department, who are elder than elder employees from SM and LD department
+
+select * from employee e1 where dept_code = 'WD' 
+and e1.age > any (select max(age) from employee e3 
+               group by dept_code having dept_code in ('SM','LD'));
+
+
+
+
+Q. Show employees from WD department
+select * from  employee where dept_code='WD';
+
+Q. Show employees from SM department
+select * from  employee where dept_code='SM';
+
+Q. Show employees from WD and SM
+Solution : select * from  employee where dept_code in('WD','SM');
+
+Solution : UNION 
+
+select * from  employee where dept_code='WD'
+UNION
+select * from  employee where dept_code='SM';
+
+
+Q. Display employees ids from SM department.
+Display employee ids having age>50
+
+select employee_id from employee where dept_code = 'SM'
+UNION
+select employee_id from employee where age>50  /*16 rows*/
+
+
+select employee_id from employee where dept_code = 'SM'
+UNION ALL
+select employee_id from employee where age>50   /*20 rows*/
+
+select employee_id from employee where dept_code = 'SM' or age>50; /*16 rows*/
+
+
+
+
+
+
+select * from employee;
+
+
+
+Q. display coordinator ids from singing and dancing committees
+
+
+select employee_id from singcommittee UNION  select emp_id from dancecommittee
+
+select employee_id from singcommittee UNION ALL  select emp_id from dancecommittee
+
+Display from which deparment the coordinators from singing and dancing committee are
+
+sub query
+
+select employee_id, dept_code from employee where employee_id in(
+select employee_id from singcommittee UNION ALL  select emp_id from dancecommittee)
+
+
+Q. Which employees are coordinating singing as well as dancing committee
+
+select employee_id from singcommittee INTERSECT  select emp_id from dancecommittee
+
+Which are the employees from WD deparment having age>50
+Solution : AND
+Solution : INTERSECT
+
+select * from employee where age>50 and dept_code = 'WD';
+
+select employee_id from employee where dept_code='WD' 
+INTERSECT 
+select employee _id from employee where age>50
+
+Rule : selected column name can be anything but data type should be same
+
+/*expression must have same datatype as corresponding expression*/
+select rrole from singcommittee
+UNION
+select emp_id  from dancecommittee   /*wrong query*/
+
+
+
+
+

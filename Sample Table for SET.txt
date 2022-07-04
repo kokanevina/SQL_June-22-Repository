@@ -1,0 +1,21 @@
+create table singcommittee
+(employee_id number(8,2), rrole varchar(50),task varchar(60));
+
+
+insert into singcommittee values (121,'Anchor','Anchoring on stage');
+insert into singcommittee values (131,'Anchor','Anchoring on stage');
+insert into singcommittee values (155,'Selector','Selecting songs and ordering');
+insert into singcommittee values (555,'Selector','Selecting songs and ordering');
+insert into singcommittee values (323,'Judge','Filtering candidates');
+insert into singcommittee values (122,'Judge','Filtering candidates');
+
+
+create table dancecommittee
+(emp_id number(8,2), rrole varchar(50),task_desc varchar(60));
+
+insert into dancecommittee values (115,'Anchor','Anchoring on stage');
+insert into dancecommittee values (101,'Anchor','Anchoring on stage');
+insert into dancecommittee values (255,'Selector','Selecting groups/solos and ordering');
+insert into dancecommittee values (555,'Selector','Selecting groups/solos and ordering');
+insert into dancecommittee values (323,'Judge','Filtering candidates');
+insert into dancecommittee values (109,'Judge','Filtering candidates');
