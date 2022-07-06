@@ -37,3 +37,27 @@ WHEN MATCHED  THEN update set sc.task=dc.task_desc /*skip this if u dont want up
 WHEN NOT MATCHED THEN  insert values(dc.emp_id,dc.rrole,dc.task_desc)
 
 /*merging records from one table to another table, duplicate records : updated, unqiue records : inserted*/
+
+
+
+select * from employee
+Q. set salary commission and dept code to employee with id  478
+
+update employee set salary=89999,commission=2500, dept_code='SM' 
+where employee_id=478
+
+select * from singcommittee
+/*set role as coordinator and task as "coordinating task" for all from singcommittee*/
+update singcommittee set rrole='coordinator', task='coordinating task' ;
+
+Q. Increment salary of SM employees by 3000
+
+select employee_id, salary from employee where dept_code='SM';
+
+update employee set salary=salary+3000 where dept_code='SM';
+
+Q. update city as 'Mumbai' where city of employees is not mentioned.
+update employee set city='Mumbai' where city is null;
+
+
+
