@@ -1,5 +1,5 @@
 create table singcommittee
-(employee_id number(8,2), rrole varchar(50),task varchar(60));
+(employee_id number(8,2) primary key, rrole varchar(50),task varchar(60));
 
 
 insert into singcommittee values (121,'Anchor','Anchoring on stage');
@@ -11,7 +11,7 @@ insert into singcommittee values (122,'Judge','Filtering candidates');
 
 
 create table dancecommittee
-(emp_id number(8,2), rrole varchar(50),task_desc varchar(60));
+(emp_id number(8,2) primary key, rrole varchar(50),task_desc varchar(60));
 
 insert into dancecommittee values (115,'Anchor','Anchoring on stage');
 insert into dancecommittee values (101,'Anchor','Anchoring on stage');

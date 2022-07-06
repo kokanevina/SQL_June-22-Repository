@@ -1,0 +1,39 @@
+/* insert, update, delete */
+
+/*DML : Data Manipulation Language: IUP*/
+/*EMPLOYEE_ID,FIRST_NAME,LAST_NAME	,CITY,AGE	,SALARY,COMMISSION	,DEPT_CODE*/
+desc employee;
+/*default : all columns, table col sequence*/
+insert into employee values(977,'Gourav','Mane','Kolhapur',55,67000,4000,'LD');
+insert into employee values(null,'Gourav','Mane','Kolhapur',55,67000,4000,'LD'); /*PK can not be null*/
+insert into employee values(766,67000,'Mane','Kolhapur',55,'Gaurav',4000,'LD'); /*invalid num for salary col*/
+insert into employee values(899,'Pujari','Rahul','Kolhapur',55,67000,4000,'LD');
+insert into employee values(478,'Haseena','Manik','Satara',55); /*not enough values*/
+insert into employee values(478,'Haseena','Manik','Satara',55,null,null,null);
+
+/*any col sequence, u can skip columns*/
+insert into employee(employee_id, last_name, first_name, dept_code, age,city) 
+values (398,'Tendulkar','Sachin','HR',77,'Pune')
+
+
+select * from employee;
+
+rt into dancecommittee values (109,'Judge','Filtering candidates');
+
+insert into singcommittee(rrole,employee_id,task)
+     select rrole,emp_id,task_desc from dancecommittee where emp_id=109
+
+select * from singcommittee
+
+insert into singcommittee(rrole,employee_id,task)
+     select rrole,emp_id,task_desc from dancecommittee /*error: while inserting duplicate records*/
+     
+Solution : Merge command
+
+
+merge into singcommittee sc using dancecommittee dc
+on (sc.employee_id=dc.emp_id)
+WHEN MATCHED  THEN update set sc.task=dc.task_desc /*skip this if u dont want updations*/
+WHEN NOT MATCHED THEN  insert values(dc.emp_id,dc.rrole,dc.task_desc)
+
+/*merging records from one table to another table, duplicate records : updated, unqiue records : inserted*/

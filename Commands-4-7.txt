@@ -83,6 +83,23 @@ UNION
 select emp_id  from dancecommittee   /*wrong query*/
 
 
+desc singcommittee;
+
+
+Q. Show coordinators from singing committee which are not in dancing committee.
+
+Select employee_id from singcommittee    
+MINUS
+Select emp_id from dancecommittee
+ /*555, 323*/
+ 
+ Select * from singcommittee    
+MINUS
+Select * from dancecommittee
+/*323*/
+
+
+
 
 
 
