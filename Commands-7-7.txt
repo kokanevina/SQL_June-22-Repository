@@ -1,0 +1,52 @@
+/*DDL : Data Definition Language : Manipulate the structure of the table : CREATE, ALTER, DROP, TRUNCATE
+ALTER : add new column, drop column, change column definition : colname, coldatatype: rules*/
+/*Create a table : Constraints : Rules while creating a table
+1. not null constraint
+2. primary key
+3. foreign key constraint
+4. default constraint
+5. Check constraint*/
+
+/*constraints are defined with DDL : in create command, but followed when DML occurs*/
+/*NUMBER, VARCHAR2 : variable length string, CHAR : fixed length strings, DATE, INT, FLOAT, DOUBLE, BLOB, CLOB*/
+create table test1(
+    firstname char(10),
+    lastname varchar(10)
+);
+insert into test1 values ('Karuna','Tiwari');
+insert into test1 values ('Poo','Sarnobat');
+delete from test1;
+select firstname, length(firstname), lastname, length(lastname) from test1;
+
+desc test1;
+
+
+/*NUMBER, NUMBER(10): whole number, number(10,2) : total digits=10, decimal digits : 2, 10-2: 8 before decimal*/
+
+NUMBER(5,2)
+
+999.999  => 1000.00 : not allowed
+999.467 =>999.47 :allowed
+999.994=> 999.99 :allowed
+
+create table test2 (salary number, age number(5,2))
+
+desc test2;
+
+insert into test2 values(67000,999.994);
+
+select * from test2;
+
+
+create table test3(birthdate DATE);
+/*DD-MON_YY, DD-MON-YYYY  if want ddft format the use to_date with insert*/
+insert into test3 values('19-Dec-1988');   
+insert into test3 values('19-Dec-88');
+insert into test3 values('9-Dec-88');
+insert into test3 values('09-Dec-88');
+insert into test3 values('19-Dec-1988 14:15:00');
+/*DD-MON-YY : if want in dfft format the use to_char with select*/
+select to_char (birthdate,'DD-MON-YYYY' ) from test3;
+
+insert into test3 values(to_date('19-Dec-1988 14:15:00','DD-MON-YYYY HH24:MI:SS'));
+select to_char (birthdate,'DD-MON-YYYY  HH:MI:SS' ) from test3;

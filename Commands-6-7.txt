@@ -60,4 +60,30 @@ Q. update city as 'Mumbai' where city of employees is not mentioned.
 update employee set city='Mumbai' where city is null;
 
 
+/*delete: row matching with condition gets deleted from table*/
+
+select * from employee order by age desc;
+Q. Delete Employees having age >=60
+delete from employee where age>=60;
+Q. From SM department remove emloyees whose name starts with 'A'
+
+select * from employee where dept_code='SM';
+
+delete from employee where dept_code = 'SM' and first_name like 'A%';
+
+remove the commission for employees from SM deparment : no delete query , soln : update
+update employee set commission=null where dept_code='SM';
+
+
+Delete all employees from table
+
+delete from employee;  /*DML: table will remain in the memory*/
+desc employee; select * from employee;
+
+truncate  table department; /*DDL :  table will remain in the memory*/
+desc department; select * from employee;
+
+
+
+
 
