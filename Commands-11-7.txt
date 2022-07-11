@@ -1,0 +1,133 @@
+1. not null : null not allowed
+2. unique : duplicate values not allowed (null allowed)
+3. primary key : unique and not null
+
+create table test (studId number(10) primary key, rollNo number(10) unique, standard varchar(30) not null, division varchar(30)) ;
+
+insert into test(studId, rollNo, standard) values (5656,12, 'jr kg');
+select * from test;
+insert into test(studId, rollNo, division) values (3434,13, 'J'); /*error*/
+insert into test(studId, rollNo, standard) values (3434,12, 'Jr Kg'); /*error*/
+insert into test(studId, rollNo, standard) values (3434,13, 'Jr Kg'); /*success*/
+insert into test(studId, standard) values (5454, 'Jr Kg');
+insert into test(studId, standard) values (7878, 'Jr Kg');
+insert into test values (5656,33,'Sr kg', 'I');/*error*/
+insert into test values (null,33,'Sr kg', 'I');/*error*/
+insert into test values (9999,33,'Sr kg', 'I');
+
+
+Jr Kg student : A1, A2, B1, B2, C4, D4, B4, A4 (Div, Roll No)
+(Div :Pk) wrong, (Roll no: PK): wrong  (DIV+ROLLNO : PK) : Composit key
+
+Column level constraints : adding constraints with column definition
+Table level constraints : adding constraints after all columns definitions
+
+Composit key : primary key including more than one column
+create table student (division varchar(5) primary key, roll_num number(5) primary key, stud_name varchar(30)); /*error*/
+
+create table student (
+    division varchar(5) , 
+    roll_num number(5), 
+    stud_name varchar(30), 
+    primary key (division,roll_num)
+);
+desc student;
+insert into student values ('A',1,'hari');
+insert into student values ('A',1,'pooja'); /*error*/
+insert into student values ('A',2,'pooja');
+
+
+
+1. not null : null not allowed
+2. unique : duplicate values not allowed (null allowed)
+3. primary key : unique and not null  , composit key
+
+create table test (studId number(10) primary key, rollNo number(10) unique, standard varchar(30) not null, division varchar(30)) ;
+
+insert into test(studId, rollNo, standard) values (5656,12, 'jr kg');
+select * from test;
+insert into test(studId, rollNo, division) values (3434,13, 'J'); /*error*/
+insert into test(studId, rollNo, standard) values (3434,12, 'Jr Kg'); /*error*/
+insert into test(studId, rollNo, standard) values (3434,13, 'Jr Kg'); /*success*/
+insert into test(studId, standard) values (5454, 'Jr Kg');
+insert into test(studId, standard) values (7878, 'Jr Kg');
+insert into test values (5656,33,'Sr kg', 'I');/*error*/
+insert into test values (null,33,'Sr kg', 'I');/*error*/
+insert into test values (9999,33,'Sr kg', 'I');
+
+
+Jr Kg student : A1, A2, B1, B2, C4, D4, B4, A4 (Div, Roll No)
+(Div :Pk) wrong, (Roll no: PK): wrong  (DIV+ROLLNO : PK) : Composit key
+
+Column level constraints : adding constraints with column definition
+Table level constraints : adding constraints after all columns definitions
+
+Composit key : primary key including more than one column
+create table student (division varchar(5) primary key, roll_num number(5) primary key, stud_name varchar(30)); /*error*/
+
+create table student (
+    division varchar(5) , 
+    roll_num number(5), 
+    stud_name varchar(30), 
+    primary key (division,roll_num)
+);
+desc student;
+insert into student values ('A',1,'hari');  /*A1*/
+insert into student values ('A',1,'pooja'); /*error A1*/
+insert into student values ('A',2,'pooja'); /*A2*/
+insert into student values ('B',1,'Poonam');  /*B1*/
+
+select * from student;
+
+
+4. default : if column is skipped during insertion then instead of null default value will get inserted
+
+5. check  : condition : value to be inserted will be checked. it it is valid then inserted
+
+create table voter(
+voter_id number(5) primary key, 
+gender varchar(10) default 'male', 
+age number(3) check(age>=18) );
+
+insert into voter(voter_id, age) values(45455,34);
+select * from voter
+insert into voter(voter_id, age) values(66666,13);
+insert into voter values(67677,'female',18);
+
+Table level constraints: not null,default only will be at column level
+
+create table demo (
+d_id number(6), 
+d_name varchar(10) not null, 
+emailid varchar(50),
+state varchar(30) ,
+primary key (d_id),
+check (state='MH'),
+unique(emailid)
+);
+drop table demo
+
+create table demo (
+d_id number(6), 
+d_name varchar(10) not null, 
+emailid varchar(50),
+state varchar(30) ,
+primary key (d_id),
+check (state='MH'),
+unique(emailid,d_name)
+);
+
+drop table demo
+
+create table demo (
+d_id number(6), 
+d_name varchar(10) not null, 
+emailid varchar(50),
+state varchar(30) ,
+constraint pk_demo primary key (d_id),
+check (state='MH'),
+unique(emailid,d_name)
+);
+
+
+
