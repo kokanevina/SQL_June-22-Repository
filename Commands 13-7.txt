@@ -1,0 +1,96 @@
+/*alter command : new column, change exiting column definition, drop column, change table name
+*/
+/*foreign key constraints*/
+
+create table department(d_code varchar(10) primary key, d_name varchar(100),
+d_budget number(20), d_role varchar(100));
+
+create table neoemployee (employee_id number(5) primary key, 
+first_name varchar2(20), 
+last_name varchar2(20), 
+city varchar2(20), 
+age number(4), salary number(7), commission number(7), dept_code varchar(10) references department(d_code));  
+
+
+insert into department values ('SM', 'Sales and Marketing', 900000, 'selling and marketing services and products');
+insert into department values ('HR', 'Human Resource', 500000,'managing resources from all departments');
+insert into department values ('LD', 'Learning and Development', 600000,'dealing with trainings and new learning trends');
+insert into department values ('WD', 'Web Development', 500000, 'Developing Web applications with different technologies');
+insert into department values ('RST', 'Research and Testing', 1500000, 'Researching new algorithms and testing them for variaous technologies');
+
+
+
+insert into neoemployee values(111,'Kishor' ,'Pawar', 'Mumbai', 56, 80000, 2000,'WD');
+insert into neoemployee values(121,'Kamal' ,'Chopra', null, 40,70000,null,'HR');
+insert into neoemployee values(112,'Rupa' ,'Wagh', 'Pune', 56,75000,5000,'WD');
+insert into neoemployee values(131,'karuna' ,'Trivedi', 'Solapur', 46,65000,3000,'LD');
+insert into neoemployee values(115,'rupali' ,'Patil', 'pune', 45,75000,null,'SM');
+
+drop table neoemployee;
+
+create table neoemployee (employee_id number(5) primary key, 
+first_name varchar2(20), 
+last_name varchar2(20), 
+city varchar2(20), 
+age number(4), salary number(7), commission number(7), 
+dept_code varchar(10) references department(d_code));  
+
+drop table neoemployee;
+
+create table neoemployee (employee_id number(5) primary key, 
+first_name varchar2(20), 
+last_name varchar2(20), 
+city varchar2(20), 
+age number(4), salary number(7), commission number(7), 
+dept_code varchar(10) references department(d_code) on delete set null);  
+
+drop table neoemployee;
+
+create table neoemployee (employee_id number(5) primary key, 
+first_name varchar2(20), 
+last_name varchar2(20), 
+city varchar2(20), 
+age number(4), salary number(7), commission number(7), 
+dept_code varchar(10) references department(d_code) on delete cascade);  
+
+/*on delete set null : if record from parent table gets deleted then records in child table where deleted parent key is present
+is set to null*/
+/*on delete cascade : if record from parent table gets deleted then rows in child table where deleted parent key is present
+are also deleted*/
+
+create table employee (id number(5), name varchar(10));
+desc employee;
+alter table employee add salary number(10,2);
+alter table employee add (commission number(10,2) not null, age number(3) not null) ;
+
+
+alter table department drop column d_code; 
+/* if it is refered in another table then we can not drop. child table should be dropped first*/
+
+delete from department where d_code='SM';
+
+select * from department;
+select * from neoemployee;
+
+
+
+
+desc department ;
+
+alter table department drop column d_role;
+
+desc employee;
+
+alter table employee modify  id primary key
+
+select * from employee;
+
+insert into employee  values(11, 'hari',34000,1000,23);
+insert into employee  values(12, 'harikishan',34000,1000,23);
+delete from employee;
+
+alter table employee modify  id varchar(10) /*column to be modified must be empty to change datatype */
+
+alter table employee modify  name varchar(5) ; /*alter table employee modify  id varchar(10) */
+
+update employee set name=null where length(name)>5;
