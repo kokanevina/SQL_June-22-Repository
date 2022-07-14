@@ -1,0 +1,78 @@
+drop constraints using alter command
+
+create table test (test_id number(2) primary key, name varchar(34) unique);
+
+alter table test drop constraint SYS_C0092481910;
+
+alter table test drop column name;
+
+// primary key to drop
+
+create table department(d_code varchar(10) primary key, d_name varchar(100),
+d_budget number(20), d_role varchar(100));
+
+insert into department values ('SM', 'Sales and Marketing', 900000, 'selling and marketing services and products');
+insert into department values ('HR', 'Human Resource', 500000,'managing resources from all departments');
+insert into department values ('LD', 'Learning and Development', 600000,'dealing with trainings and new learning trends');
+insert into department values ('WD', 'Web Development', 500000, 'Developing Web applications with different technologies');
+insert into department values ('RST', 'Research and Testing', 1500000, 'Researching new algorithms and testing them for variaous technologies');
+
+select * from department;
+
+truncate table department;
+desc department;
+
+alter table department rename to dept;
+desc dept;
+
+alter table dept rename column d_name to dept_name;
+
+drop table dept;
+desc dept;
+
+
+
+
+create table department(d_code varchar(10) primary key, d_name varchar(100),
+d_budget number(20), d_role varchar(100));
+
+insert into department values ('SM', 'Sales and Marketing', 900000, 'selling and marketing services and products');
+insert into department values ('HR', 'Human Resource', 500000,'managing resources from all departments');
+insert into department values ('LD', 'Learning and Development', 600000,'dealing with trainings and new learning trends');
+insert into department values ('WD', 'Web Development', 500000, 'Developing Web applications with different technologies');
+insert into department values ('RST', 'Research and Testing', 1500000, 'Researching new algorithms and testing them for variaous technologies');
+
+/*update budget of HR deparment
+delete RST deparment
+update Name of WD department*/
+desc department;
+
+update department set d_budget=d_budget+200000 where d_code='HR';
+delete from department where d_code='RST';
+update department set d_name='Web Designing' where  d_code='WD';
+rollback;
+
+select * from department;
+
+update department set d_budget=d_budget+200000 where d_code='HR';
+delete from department where d_code='RST';
+update department set d_name='Web Designing' where  d_code='WD';
+commit;
+
+update department set d_budget=d_budget+200000 where d_code='HR';
+create table stud(stud_id number(4));
+update department set d_name='Web Development' where  d_code='WD';
+rollback;
+
+delete from department;
+rollback;
+
+truncate table department;
+rollback;
+
+
+update department set d_budget=d_budget+200000 where d_code='HR';
+delete from department where d_code='RST';
+update department set d_name='Web Designing' where  d_code='WD';
+commit;
+rollback;
